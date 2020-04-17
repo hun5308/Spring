@@ -3,10 +3,12 @@ package com.jsp.dao;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.jsp.dto.MemberVO;
+import com.jsp.request.SearchCriteria;
 
 
 public class MemberDAOImpl implements MemberDAO {
@@ -89,6 +91,36 @@ public class MemberDAOImpl implements MemberDAO {
 		SqlSession session=sessionFactory.openSession(true);
 		session.update("Member-Mapper.enabledMember",id);
 		session.close();
+		
+	}
+
+
+	@Override
+	public List<MemberVO> selectMemberList(SearchCriteria cri) throws SQLException {
+		SqlSession session=sessionFactory.openSession();
+		
+		int offset = cri.getPageStartRowNum();
+		int limit = cri.getPerPageNum();
+		RowBounds rowBounds = new RowBounds(offset, limit);
+		
+		List<MemberVO> memberList = null;
+		
+		memberList = session.selectList("Member-Mapper.selectSeachMemberList", cri, rowBounds);
+		session.close();
+		
+		return memberList;
+	}
+
+	
+	@Override
+	public int selectMemberListCount(SearchCriteria cri) throws SQLException {
+		int count = 0;
+		SqlSession session=sessionFactory.openSession();
+		count = session.selectOne("Member-Mapper.selectSeachMemberListCount", cri);
+		
+		session.close();
+		
+		return count;
 		
 	}
 
