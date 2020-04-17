@@ -105,7 +105,7 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		List<MemberVO> memberList = null;
 		
-		memberList = session.selectList("Member-Mapper.selectSeachMemberList", cri, rowBounds);
+		memberList = session.selectList("Member-Mapper.selectSearchMemberList", cri, rowBounds);
 		session.close();
 		
 		return memberList;
@@ -116,7 +116,7 @@ public class MemberDAOImpl implements MemberDAO {
 	public int selectMemberListCount(SearchCriteria cri) throws SQLException {
 		int count = 0;
 		SqlSession session=sessionFactory.openSession();
-		count = session.selectOne("Member-Mapper.selectSeachMemberListCount", cri);
+		count = session.selectOne("Member-Mapper.selectSearchMemberCount", cri);
 		
 		session.close();
 		

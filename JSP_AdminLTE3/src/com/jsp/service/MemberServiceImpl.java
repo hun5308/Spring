@@ -82,7 +82,7 @@ public class MemberServiceImpl implements MemberService {
 		
 		Map<String, Object> dataMap = new HashMap<String, Object>();
 		dataMap.put("memberList", memberList);
-		dataMap.put("pageMalek", pageMaker);
+		dataMap.put("pageMaker", pageMaker);
 		
 		return dataMap;
 	}
