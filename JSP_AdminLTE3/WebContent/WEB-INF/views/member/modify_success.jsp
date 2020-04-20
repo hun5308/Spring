@@ -4,6 +4,6 @@
 
 <script>
 	window.opener.location.reload(true);
-	location.href="detail?id=${id}";
+	location.href="detail.do?id=${id}";
 </script>
 

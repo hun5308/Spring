@@ -12,14 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jsp.dispatcher.ViewResolver;
 import com.jsp.dto.MemberVO;
 import com.jsp.request.SearchCriteria;
 import com.jsp.service.MemberService;
 import com.jsp.service.MemberServiceImpl;
-import com.jsp.utils.ViewResolver;
 
 
-@WebServlet("/member/list")
+//@WebServlet("/member/list")
 public class MemberListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,6 +35,7 @@ public class MemberListServlet extends HttpServlet {
 			
 		} catch (NumberFormatException e) {
 			System.out.println("페이지 번호가 누락으로 기본1페이지로 세팅됩니다.");
+			
 		}
 		
 		String searchType = request.getParameter("searchType");

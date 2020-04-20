@@ -17,6 +17,15 @@
     	<listener-class>com.jsp.listener.InitListener</listener-class>
   	</listener>
 	
+	<servlet>
+		<servlet-name>FrontServlet</servlet-name>
+		<servlet-class>com.jsp.dispatcher.FrontServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FrontServlet</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
 	
   <filter>
     <filter-name>setCharacterEncodingFilter</filter-name>

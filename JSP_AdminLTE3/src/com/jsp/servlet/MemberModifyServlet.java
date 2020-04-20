@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.jsp.dispatcher.ViewResolver;
 import com.jsp.dto.MemberVO;
 import com.jsp.request.MemberRegistRequest;
 import com.jsp.service.MemberServiceImpl;
 import com.jsp.utils.GetUploadPath;
-import com.jsp.utils.ViewResolver;
 
 /**
  * Servlet implementation class MemberModify
  */
-@WebServlet("/member/modify")
+//@WebServlet("/member/modify")
 public class MemberModifyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url="member/modify";		

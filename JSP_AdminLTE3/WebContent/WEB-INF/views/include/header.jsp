@@ -14,7 +14,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title><decorator:title default="은주's Encodiong" /></title>
+  <title><decorator:title default="Encodiong" /></title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/bootstrap/plugins/fontawesome-free/css/all.min.css">
@@ -179,7 +179,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="row">
           	<a class="col-md-8" href="">${loginUser.id }</a>
           	<button class="btn btn-xs btn-primary col-xs-3 " type="button" 
-          		onclick="location.href='<%=request.getContextPath() %>/commons/logout';" >Logout</button>
+          		onclick="location.href='<%=request.getContextPath() %>/commons/logout.do';" >Logout</button>
           </div>
           <a href="tel:${loginUser.phone }">tel : ${loginUser.phone }</a><br/>
           <a href="mailto:${loginUser.email }">email : ${loginUser.email }</a>			          
