@@ -13,8 +13,11 @@ public interface BoardService {
 	// 목록조회	
 	Map<String,Object> getBoardList(SearchCriteria cri)throws SQLException;
 	
+	
 	// 상세보기
 	BoardVO getBoard(int bno)throws SQLException;	
+	
+	//수정 화면
 	BoardVO getBoardForModify(int bno)throws SQLException;
 		
 	// 등록

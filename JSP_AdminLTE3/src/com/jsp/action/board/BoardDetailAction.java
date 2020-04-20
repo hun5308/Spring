@@ -9,9 +9,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.jsp.action.Action;
 import com.jsp.dto.BoardVO;
 import com.jsp.service.BoardService;
+import com.jsp.service.BoardServiceImpl;
 
 public class BoardDetailAction implements Action {
-	private BoardService boardService;//
+	private BoardService boardService = BoardServiceImpl.getInstance();
 	public void setBoardService(BoardService boardService) {
 		this.boardService = boardService;
 	}

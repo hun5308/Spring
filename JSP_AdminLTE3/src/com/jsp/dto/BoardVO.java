@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class BoardVO {
 	private int bno;          // 게시판번호
-	private String title;
-	private String writer;
-	private String content;
+	private String title;	  // 게시글 제목
+	private String writer;    // 작성자
+	private String content;   // 내용
 	private int viewcnt;      // 조회수
 	private Date regDate;     // 등록날짜
 	private Date updatedate;  // 수정날짜
