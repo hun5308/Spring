@@ -48,7 +48,7 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public BoardVO selectBoardByBno(int bno) throws SQLException {
 		SqlSession session = sessionFactory.openSession();
-		BoardVO board=session.selectOne("Board-Mapper.selectBoardById",bno);			
+		BoardVO board=session.selectOne("Board-Mapper.selectBoardByBno",bno);			
 		session.close();		
 		return board;
 	}
@@ -75,16 +75,19 @@ public class BoardDAOImpl implements BoardDAO{
 		
 	}
 
+	@Override
+	public int selectBoardSeqNextValue() throws SQLException {
+		SqlSession session=sessionFactory.openSession();
+		int bno = session.selectOne("Board-Mapper.selectBoardSeqNextValue");
+		session.close();
+		return bno;
+	}
+
 //	@Override
 //	public void increaseViewCnt(int bno) throws SQLException {
 //		SqlSession session = sessionFactory.openSession();
 //		
 //	}
-//
-//	@Override
-//	public int selectBoardSeqNext() throws SQLException {
-//		SqlSession session = sessionFactory.openSession();
-//		return 0;
-//	}
+
 
 }

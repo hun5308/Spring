@@ -1,7 +1,6 @@
 package com.jsp.action.board;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,32 +13,38 @@ import com.jsp.service.BoardServiceImpl;
 
 public class BoardModifyFormAction implements Action{
 	
-	private BoardService boardService  = BoardServiceImpl.getInstance();
+	private BoardService boardService = BoardServiceImpl.getInstance();
 	public void setBoardService(BoardService boardService) {
 		this.boardService = boardService;
 	}
 
-
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String url="board/modifyBoard";
 		
-		String url ="board/modifyBoard";
-		
-		try {
-			int bno = Integer.parseInt(request.getParameter("bno"));
+	
+			int bno = Integer.parseInt(request.getParameter("bno"));			
+						
+		try{	
 			
-			BoardVO board = boardService.getBoardForModify(bno);
+			BoardVO board=boardService.getBoardForModify(bno);
 			
 			request.setAttribute("board", board);
 			
-			
-		} catch (Exception e) {
+		}catch(Exception e){
 			e.printStackTrace();
-			url = "error/500_error";
+			url="error/500_error";
 		}
 		
 		return url;
 	}
 
 }
+
+
+
+
+
+
+

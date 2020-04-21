@@ -27,6 +27,9 @@ public interface BoardDAO {
 
 	//게시글 삭제
 	void deleteBoard(int bno) throws SQLException;
+	
+	//bno번호
+	int selectBoardSeqNextValue() throws SQLException;
 
 	
 //	//조회수

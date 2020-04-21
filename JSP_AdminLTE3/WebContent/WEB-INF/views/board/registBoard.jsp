@@ -29,7 +29,7 @@
 						</div>
 					</div><!--end card-header  -->
 					<div class="card-body pad">
-						<form role="form" method="post" action="registForm.do" name="registForm">
+						<form role="form" method="post" action="regist.do" name="registForm">
 							<div class="form-group">
 								<label for="title">제 목</label> 
 								<input type="text" id="title"
@@ -83,6 +83,19 @@
 	
 </script>
 
-<%-- <%@ include file="/WEB-INF/views/commons/summernote.jsp" %> --%>
+<%@ include file="/WEB-INF/views/commons/summernote.jsp" %>
+
+
 
 </body>
+
+
+
+
+
+
+
+
+
+
+  

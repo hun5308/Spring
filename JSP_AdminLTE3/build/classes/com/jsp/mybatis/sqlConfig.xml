@@ -9,7 +9,8 @@
 		<typeAlias type="java.lang.String" alias="str"/>
 		<typeAlias type="java.lang.Integer" alias="int"/>
 		<typeAlias type="com.jsp.dto.MemberVO" alias="member"/>
-		<typeAlias type="com.jsp.dto.BoardVO" alias="board"/>				
+		<typeAlias type="com.jsp.dto.BoardVO" alias="board"/>
+		<typeAlias type="com.jsp.dto.ReplyVO" alias="reply"/>				
 	</typeAliases>
 	
 	<environments default="dev">
@@ -27,6 +28,7 @@
 	<mappers> 
 		<mapper resource="com/jsp/mybatis/Member-Mapper.xml"/>
 		<mapper resource="com/jsp/mybatis/Board-Mapper.xml"/>
+		<mapper resource="com/jsp/mybatis/Reply-Mapper.xml"/>
 	</mappers>
 	
 	

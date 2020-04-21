@@ -37,8 +37,8 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardVO getBoardForModify(int bno) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		BoardVO board = boardDAO.selectBoardByBno(bno);
+		return board;
 	}
 
 	@Override
@@ -73,6 +73,11 @@ public class BoardServiceImpl implements BoardService{
 	
 		return dataMap;
 		
+	}
+	@Override
+	public int selectBoardSeqNextValue() throws SQLException {
+		int seq = boardDAO.selectBoardSeqNextValue();
+		return seq;
 	}
 	
 

@@ -2,7 +2,12 @@
 <web-app xmlns:web="http://xmlns.jcp.org/xml/ns/javaee">
 
 	<context-param>
-		<param-name>BoardDAO</param-name>
+		<param-name>replyDAO</param-name>
+		<param-value>com.jsp.dao.ReplyDAOImpl</param-value>
+	</context-param>
+	
+	<context-param>
+		<param-name>boardDAO</param-name>
 		<param-value>com.jsp.dao.BoardDAOImpl</param-value>
 	</context-param>
 
@@ -17,7 +22,7 @@
 	</context-param>
 	
 	<listener>
-    	<listener-class>com.jsp.listener.InitListener</listener-class>
+    	<listener-class>com.jsp.listener.InitBeanListener</listener-class>
   	</listener>
 	
 	<servlet>
