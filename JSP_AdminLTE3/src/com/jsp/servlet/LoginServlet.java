@@ -14,6 +14,7 @@ import com.jsp.dispatcher.ViewResolver;
 import com.jsp.dto.MemberVO;
 import com.jsp.exception.InvalidPasswordException;
 import com.jsp.exception.NotFoundIDException;
+import com.jsp.service.BoardService;
 import com.jsp.service.MemberService;
 import com.jsp.service.MemberServiceImpl;
 
@@ -21,6 +22,11 @@ import com.jsp.service.MemberServiceImpl;
 //@WebServlet("/commons/login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private MemberService memberService;
+	public void setBoardService(MemberService memberService) {
+		this.memberService = memberService;
+	}
    
 	/*public void init(ServletConfig config) throws ServletException {
 		System.out.println("init() execute!");
@@ -51,10 +57,10 @@ public class LoginServlet extends HttpServlet {
 		
 		
 		try {
-			MemberServiceImpl.getInstance().login(id, pwd);
+			memberService.login(id, pwd);
 			
 						
-			MemberVO loginUser= MemberServiceImpl.getInstance().getMember(id);
+			MemberVO loginUser= memberService.getMember(id);
 					
 			session.setAttribute("loginUser", loginUser);
 			session.setMaxInactiveInterval(6*60);

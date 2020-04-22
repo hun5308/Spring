@@ -155,9 +155,15 @@
 
 <%@ include file="picture_js.jsp" %>
 
+<script type="text/javascript">
+function idCheck_go() {
+	
+}
+
+</script>
+
+
 </body>
-
-
 
 
 

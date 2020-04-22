@@ -15,7 +15,7 @@ import com.jsp.service.MemberServiceImpl;
 
 public class MemberListAction implements Action {
 
-	private MemberService memberService = MemberServiceImpl.getInstance();
+	private MemberService memberService;
 	public void setMemberService(MemberService memberService) {
 		this.memberService = memberService;
 	}
@@ -44,11 +44,11 @@ public class MemberListAction implements Action {
 		cri.setSearchType(searchType);
 		cri.setKeyword(keyword);
 		
-		MemberService service = MemberServiceImpl.getInstance();
+		
 		
 		try {
 			
-			Map<String, Object> dataMap = service.getMemberList(cri);
+			Map<String, Object> dataMap = memberService.getMemberList(cri);
 			
 			request.setAttribute("memberList", dataMap.get("memberList"));
 			request.setAttribute("pageMaker", dataMap.get("pageMaker"));

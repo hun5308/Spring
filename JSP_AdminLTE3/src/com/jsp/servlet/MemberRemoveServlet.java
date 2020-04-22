@@ -12,10 +12,17 @@ import javax.servlet.http.HttpSession;
 
 import com.jsp.dispatcher.ViewResolver;
 import com.jsp.dto.MemberVO;
+import com.jsp.service.MemberService;
 import com.jsp.service.MemberServiceImpl;
 
 //@WebServlet("/member/remove")
 public class MemberRemoveServlet extends HttpServlet {
+	
+	private MemberService memberService;
+	public void setBoardService(MemberService memberService) {
+		this.memberService = memberService;
+	}
+   
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url="member/remove_success";
@@ -29,7 +36,7 @@ public class MemberRemoveServlet extends HttpServlet {
 			url = "member/remove_denied";
 		}else {
 			try {
-				MemberServiceImpl.getInstance().remove(id);
+				memberService.remove(id);
 			} catch (SQLException e) {
 				e.printStackTrace();
 				url = "member/remove_fail";

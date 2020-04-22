@@ -13,7 +13,7 @@ import com.jsp.service.MemberServiceImpl;
 
 public class MemberenablecAction implements Action {
 
-	private MemberService memberService = MemberServiceImpl.getInstance();
+	private MemberService memberService;
 	public void setMemberService(MemberService memberService) {
 		this.memberService = memberService;
 	}
@@ -28,7 +28,7 @@ public class MemberenablecAction implements Action {
 		String id = request.getParameter("id");
 
 		try {
-			MemberServiceImpl.getInstance().enabled(id);
+			memberService.enabled(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			url = "member/enabled_fail";

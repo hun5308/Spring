@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 
-<script>
+<script>	
+	location.href="detail.do?bno=${bno}&state=modify";
 	window.opener.location.reload(true);
-	location.href="detail.do?bno=${bno}";
 </script>
 

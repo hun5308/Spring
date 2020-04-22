@@ -18,7 +18,7 @@ import com.jsp.utils.GetUploadPath;
 
 public class MemberModifyAction implements Action {
 
-	private MemberService memberService = MemberServiceImpl.getInstance();
+	private MemberService memberService;
 	public void setMemberService(MemberService memberService) {
 		this.memberService = memberService;
 	}
@@ -45,7 +45,7 @@ public class MemberModifyAction implements Action {
 		System.out.println(member);
 		
 		try {
-			MemberServiceImpl.getInstance().modify(member);		
+			memberService.modify(member);		
 
 			HttpSession session = request.getSession();
 			MemberVO loginUser=(MemberVO)session.getAttribute("loginUser");

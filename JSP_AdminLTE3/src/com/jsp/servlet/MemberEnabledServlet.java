@@ -12,11 +12,18 @@ import javax.servlet.http.HttpSession;
 
 import com.jsp.dispatcher.ViewResolver;
 import com.jsp.dto.MemberVO;
+import com.jsp.service.MemberService;
 import com.jsp.service.MemberServiceImpl;
 
 //@WebServlet("/member/enabled")
 public class MemberEnabledServlet extends HttpServlet {
 
+	private MemberService memberService;
+	public void setBoardService(MemberService memberService) {
+		this.memberService = memberService;
+	}
+   
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = "member/enabled_success";
@@ -24,7 +31,7 @@ public class MemberEnabledServlet extends HttpServlet {
 		String id = request.getParameter("id");
 
 		try {
-			MemberServiceImpl.getInstance().enabled(id);
+			memberService.enabled(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			url = "member/enabled_fail";

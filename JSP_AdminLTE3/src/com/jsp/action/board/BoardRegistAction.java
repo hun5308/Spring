@@ -17,7 +17,7 @@ import com.jsp.service.BoardServiceImpl;
 
 public class BoardRegistAction implements Action {
 
-	private BoardService boardService = BoardServiceImpl.getInstance();
+	private BoardService boardService;
 	public void setBoardService(BoardService boardService) {
 		this.boardService = boardService;
 	}
@@ -29,10 +29,11 @@ public class BoardRegistAction implements Action {
 		
 		try {
 			
+		int bno = 0;
 		String title = request.getParameter("title");
 		String writer = request.getParameter("writer");   
 		String content = request.getParameter("content");
-		int bno	= boardService.selectBoardSeqNextValue();
+
 		
 
 		BoardRegistRequest boardReq = new BoardRegistRequest(title, writer, content, bno);

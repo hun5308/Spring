@@ -12,11 +12,18 @@ import javax.servlet.http.HttpSession;
 
 import com.jsp.dispatcher.ViewResolver;
 import com.jsp.dto.MemberVO;
+import com.jsp.service.MemberService;
 import com.jsp.service.MemberServiceImpl;
 
 //@WebServlet("/member/disabled")
 public class MemberDisabledServlet extends HttpServlet {
 
+	private MemberService memberService;
+	public void setBoardService(MemberService memberService) {
+		this.memberService = memberService;
+	}
+   
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = "member/disabled_success";
@@ -30,7 +37,7 @@ public class MemberDisabledServlet extends HttpServlet {
 			url = "member/disabled_denied";
 		} else { //로그인 사용자가 아닐경우 실행.
 			try {
-				MemberServiceImpl.getInstance().disabled(id);
+				memberService.disabled(id);
 			} catch (SQLException e) {
 				e.printStackTrace();
 				url = "member/disabled_fail";

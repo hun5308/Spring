@@ -10,6 +10,8 @@ public class BoardRegistRequest {
 	private String writer;    // 작성자
 	private String content;   // 내용
 	private int bno;
+
+	
 	
 	
 	
@@ -20,10 +22,17 @@ public class BoardRegistRequest {
 		this.writer = writer;
 		this.content = content;
 		this.bno = bno;
+
 	}
 
 
-
+	public int getBno() {
+		return bno;
+	}
+	
+	public void setBno(int bno) {
+		this.bno = bno;
+	}
 
 	public String getTitle() {
 		return title;
@@ -60,35 +69,19 @@ public class BoardRegistRequest {
 	}
 
 
-
-	public int getBno() {
-		return bno;
-	}
-
-
-
-	public void setBno(int bno) {
-		this.bno = bno;
-	}
-
-
-
 	@Override
 	public String toString() {
 		return "BoardRegistRequest [title=" + title + ", writer=" + writer + ", content=" + content + ", bno=" + bno
 				+ "]";
 	}
-
-
-
 	public BoardVO toBoardVO() {
 		BoardVO board = new BoardVO();
 
-		board.setBno(bno);
 		board.setTitle(title);
 		board.setWriter(writer);
 		board.setContent(content);
-		
+		board.setBno(bno);
+				
 		return board;
 	}
 }

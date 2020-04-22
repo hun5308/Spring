@@ -22,7 +22,7 @@ import com.jsp.utils.GetUploadPath;
 
 public class BoardModifyAction implements Action {
 
-	private BoardService boardService = BoardServiceImpl.getInstance();
+	private BoardService boardService;
 	public void setBoardService(BoardService boardService) {
 		this.boardService = boardService;
 	}
@@ -33,11 +33,11 @@ public class BoardModifyAction implements Action {
 			throws ServletException, IOException {
 		String url="board/modify_success";
 		
-		String num = request.getParameter("bno");		
+		int bno = Integer.parseInt(request.getParameter("bno"));
 		String title = request.getParameter("title");
 		String writer = request.getParameter("writer"); 
 		String content = request.getParameter("content");
-		int bno = Integer.parseInt(num);
+		
 		
 		BoardRegistRequest boardReq = new BoardRegistRequest(title, writer, content, bno);		
 		BoardVO board = boardReq.toBoardVO();

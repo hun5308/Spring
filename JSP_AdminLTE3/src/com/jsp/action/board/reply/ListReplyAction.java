@@ -17,7 +17,7 @@ import com.jsp.service.ReplyServiceImpl;
 
 public class ListReplyAction implements Action {
 	
-	private ReplyService replyService = ReplyServiceImpl.getInstance();
+	private ReplyService replyService;
 	public void setReplyService(ReplyService replyService) {
 		this.replyService=replyService;
 	}

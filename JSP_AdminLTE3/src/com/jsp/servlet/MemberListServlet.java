@@ -22,6 +22,12 @@ import com.jsp.service.MemberServiceImpl;
 //@WebServlet("/member/list")
 public class MemberListServlet extends HttpServlet {
 
+	private MemberService memberService;
+	public void setBoardService(MemberService memberService) {
+		this.memberService = memberService;
+	}
+   
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "member/list";
 				
@@ -43,11 +49,10 @@ public class MemberListServlet extends HttpServlet {
 		cri.setSearchType(searchType);
 		cri.setKeyword(keyword);
 		
-		MemberService service = MemberServiceImpl.getInstance();
 		
 		try {
 			
-			Map<String, Object> dataMap = service.getMemberList(cri);
+			Map<String, Object> dataMap = memberService.getMemberList(cri);
 			
 			request.setAttribute("memberList", dataMap.get("memberList"));
 			request.setAttribute("pageMaker", dataMap.get("pageMaker"));

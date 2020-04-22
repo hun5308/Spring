@@ -12,13 +12,7 @@ import com.jsp.request.PageMaker;
 import com.jsp.request.SearchCriteria;
 
 public class ReplyServiceImpl implements ReplyService{
-	
-	private static ReplyServiceImpl instance=new ReplyServiceImpl();
-	private ReplyServiceImpl() {}
-	public static ReplyServiceImpl getInstance() {
-		return instance;
-	}
-	
+
 	private ReplyDAO replyDAO; //listener로 조립
 	public void setReplyDAO(ReplyDAO replyDAO){
 		this.replyDAO=replyDAO;

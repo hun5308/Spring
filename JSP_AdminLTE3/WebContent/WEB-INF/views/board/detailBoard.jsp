@@ -77,6 +77,9 @@
 							<div class="time-label" id="repliesDiv">
 								<span class="bg-green">Replies List </span>
 							</div>
+							
+							
+							
 						</div>
 						<div class='text-center'>
 							<ul id="pagination" class="pagination justify-content-center m-0">
@@ -138,7 +141,11 @@
 	
 	<jsp:include page="detailBoard_js.jsp"></jsp:include>
 	
-	<%-- <%@ include file="reply_js.jsp" %> --%>
+	<%@ include file="reply_js.jsp" %>
+	
+	<script>
+		window.opener.location.reload(true);
+	</script>
 	
 		
 </body>

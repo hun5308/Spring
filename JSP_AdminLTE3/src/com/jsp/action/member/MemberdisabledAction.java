@@ -15,7 +15,7 @@ import com.jsp.service.MemberServiceImpl;
 
 public class MemberdisabledAction implements Action {
 
-	private MemberService memberService = MemberServiceImpl.getInstance();
+	private MemberService memberService;
 	public void setMemberService(MemberService memberService) {
 		this.memberService = memberService;
 	}
@@ -36,7 +36,7 @@ public class MemberdisabledAction implements Action {
 			url = "member/disabled_denied";
 		} else { //로그인 사용자가 아닐경우 실행.
 			try {
-				MemberServiceImpl.getInstance().disabled(id);
+				memberService.disabled(id);
 			} catch (SQLException e) {
 				e.printStackTrace();
 				url = "member/disabled_fail";

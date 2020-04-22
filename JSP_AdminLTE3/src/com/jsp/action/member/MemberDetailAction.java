@@ -14,7 +14,7 @@ import com.jsp.service.MemberServiceImpl;
 
 public class MemberDetailAction implements Action {
 
-	private MemberService memberService = MemberServiceImpl.getInstance();
+	private MemberService memberService;
 	public void setMemberService(MemberService memberService) {
 		this.memberService = memberService;
 	}
@@ -29,7 +29,7 @@ public class MemberDetailAction implements Action {
 		
 		MemberVO member=null;
 		try {
-			member = MemberServiceImpl.getInstance().getMember(id);			
+			member = memberService.getMember(id);			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			url="error/500_error";

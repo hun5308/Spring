@@ -29,8 +29,6 @@ public interface BoardService {
 	// 삭제
 	void remove(int bno)throws SQLException;
 	
-	//bno 번호
-	int selectBoardSeqNextValue() throws SQLException;
 }
 
 

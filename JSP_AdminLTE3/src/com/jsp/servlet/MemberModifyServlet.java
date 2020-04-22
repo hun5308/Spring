@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import com.jsp.dispatcher.ViewResolver;
 import com.jsp.dto.MemberVO;
 import com.jsp.request.MemberRegistRequest;
+import com.jsp.service.MemberService;
 import com.jsp.service.MemberServiceImpl;
 import com.jsp.utils.GetUploadPath;
 
@@ -22,12 +23,18 @@ import com.jsp.utils.GetUploadPath;
  */
 //@WebServlet("/member/modify")
 public class MemberModifyServlet extends HttpServlet {
+	
+	private MemberService memberService;
+	public void setBoardService(MemberService memberService) {
+		this.memberService = memberService;
+	}
+   	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url="member/modify";		
 		String id=request.getParameter("id");		
 		MemberVO member=null;
 		try {
-			member=MemberServiceImpl.getInstance().getMember(id);
+			member=memberService.getMember(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -58,7 +65,7 @@ public class MemberModifyServlet extends HttpServlet {
 		System.out.println(member);
 		
 		try {
-			MemberServiceImpl.getInstance().modify(member);		
+			memberService.modify(member);		
 
 			HttpSession session = request.getSession();
 			MemberVO loginUser=(MemberVO)session.getAttribute("loginUser");
