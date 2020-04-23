@@ -41,6 +41,7 @@ public class ReplyServiceImpl implements ReplyService{
 	@Override
 	public void registReply(ReplyVO reply) throws SQLException {
 		int rno = replyDAO.selectReplySeqNextValue();
+		reply.setRno(rno);
 		replyDAO.insertReply(reply);
 
 	}

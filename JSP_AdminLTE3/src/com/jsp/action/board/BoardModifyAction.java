@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import com.jsp.action.Action;
 import com.jsp.dto.BoardVO;
 import com.jsp.dto.MemberVO;
+import com.jsp.request.BoardModifyRequest;
 import com.jsp.request.BoardRegistRequest;
 import com.jsp.request.MemberRegistRequest;
 import com.jsp.service.BoardService;
@@ -39,7 +40,7 @@ public class BoardModifyAction implements Action {
 		String content = request.getParameter("content");
 		
 		
-		BoardRegistRequest boardReq = new BoardRegistRequest(title, writer, content, bno);		
+		BoardModifyRequest boardReq = new BoardModifyRequest(bno, title, content, writer);		
 		BoardVO board = boardReq.toBoardVO();
 		
 		try {
@@ -48,7 +49,7 @@ public class BoardModifyAction implements Action {
 		
 		} catch (SQLException e) {		
 			e.printStackTrace();
-			url="member/modify_fail";			
+			url="board/modify_fail";			
 		}	
 		request.setAttribute("bno", bno);
 		
