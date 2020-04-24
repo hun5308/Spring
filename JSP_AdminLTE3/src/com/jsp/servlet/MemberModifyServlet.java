@@ -24,6 +24,8 @@ import com.jsp.utils.GetUploadPath;
 //@WebServlet("/member/modify")
 public class MemberModifyServlet extends HttpServlet {
 	
+	ViewResolver viewResolver;
+	
 	private MemberService memberService;
 	public void setBoardService(MemberService memberService) {
 		this.memberService = memberService;
@@ -41,7 +43,7 @@ public class MemberModifyServlet extends HttpServlet {
 		
 		request.setAttribute("member", member);
 		
-		ViewResolver.view(request, response, url);
+		viewResolver.view(request, response, url);
 		
 	}
 
@@ -86,7 +88,7 @@ public class MemberModifyServlet extends HttpServlet {
 		
 		request.setAttribute("id", id);
 		
-		ViewResolver.view(request, response, url);
+		viewResolver.view(request, response, url);
 	}
 
 }

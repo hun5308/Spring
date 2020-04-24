@@ -3,6 +3,7 @@ package com.jsp.dispatcher;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,7 +22,35 @@ import com.jsp.service.MemberServiceImpl;
 
 
 public class FrontServlet extends HttpServlet {
-
+	
+	private HandlerMapper handlerMapper;
+	private ViewResolver viewResolver;
+	
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		
+		String handlerMapperType = config.getInitParameter("handlerMapper");
+		String viewResolverTyper = config.getInitParameter("viewResolver");
+		
+		try {
+			this.handlerMapper = (HandlerMapper) injectionBean(handlerMapperType);
+			System.out.println("[FrontServlet]"+handlerMapper+"가 준비되었습니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("[FrontServlet]"+handlerMapper+"가 준비되지 않았습니다.");
+		}
+		
+		
+		try {
+			this.viewResolver = (ViewResolver) injectionBean(viewResolverTyper);
+			System.out.println("[ViewResolver]"+handlerMapper+"가 준비되었습니다.");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("[ViewResolver]"+handlerMapper+"가 준비되지 않았습니다.");
+		}
+	
+		super.init(config);
+	}
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		requestPro(request, response);
@@ -44,7 +73,7 @@ public class FrontServlet extends HttpServlet {
 			Action act = null;
 			String view = null;
 			
-			act = HandlerMapper.getAction(command);
+			act = handlerMapper.getAction(command);
 			
 			if(act==null) {
 				System.out.println("!! not found : " + command);
@@ -52,7 +81,14 @@ public class FrontServlet extends HttpServlet {
 				view=act.execute(request, response);
 				
 				if(view != null)
-					ViewResolver.view(request, response, view);
+					viewResolver.view(request, response, view);
 			}
+	}
+	
+	private Object injectionBean(String classType) throws Exception{
+		
+			Class<?> cls = Class.forName(classType);
+			
+			return cls.newInstance();
 	}
 }

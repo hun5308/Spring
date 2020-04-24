@@ -17,6 +17,8 @@ import com.jsp.service.MemberServiceImpl;
 //@WebServlet("/member/detail")
 public class MemberDetailServlet extends HttpServlet {
 	
+	ViewResolver viewResolver;
+	
 	private MemberService memberService;
 	public void setBoardService(MemberService memberService) {
 		this.memberService = memberService;
@@ -37,7 +39,7 @@ public class MemberDetailServlet extends HttpServlet {
 		
 		request.setAttribute("member", member);
 		
-		ViewResolver.view(request, response, url);
+		viewResolver.view(request, response, url);
 	}
 
 	

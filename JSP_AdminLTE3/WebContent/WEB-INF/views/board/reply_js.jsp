@@ -162,6 +162,9 @@ $('#replyModBtn').on('click',function(event){
 				alert("수정이 실패했습니다.");
 			}
 		},
+		error:function(error){
+			alert('수정실패했습니다.');
+		},
 		complete:function(){
 			$('#modifyModal').modal('hide');
 		}
@@ -169,7 +172,33 @@ $('#replyModBtn').on('click',function(event){
 });
 
 $('#replyDelBtn').on('click',function(event){
-	alert("삭제");
+	//alert("삭제");
+	var rno =$('.modal-title').text();
+	
+	var sendData={
+			bno:${board.bno},
+			rno:rno,
+			page:replyPage
+	};
+	
+	$.ajax({
+		url:"<%=request.getContextPath()%>/replies/remove.do",
+		type:"post",
+		data:JSON.stringify(sendData),
+		success:function(data){
+			var result = data.split(',');
+			if(result[0]=="SUCCESS"){
+				alert("삭제되었습니다.");
+				getPage("<%=request.getContextPath()%>/replies/list.do?bno=${board.bno}&page="+result[1]);
+			}
+		},
+		error:function(error){
+			alert('삭제실패했습니다.');
+		},
+		complete:function(){
+			$('#modifyModal').modal('hide');
+		}
+	});
 });
 </script>
 

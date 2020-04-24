@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public class ViewResolver {
 	
-	public static void view(HttpServletRequest request, 
+	public void view(HttpServletRequest request, 
 							HttpServletResponse response, 
 							String url)
 									throws ServletException, IOException {

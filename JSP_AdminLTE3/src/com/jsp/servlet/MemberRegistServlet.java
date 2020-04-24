@@ -18,6 +18,8 @@ import com.jsp.service.MemberServiceImpl;
 //@WebServlet("/member/regist")
 public class MemberRegistServlet extends HttpServlet {
 	
+	ViewResolver viewResolver;
+	
 	private MemberService memberService;
 	public void setBoardService(MemberService memberService) {
 		this.memberService = memberService;
@@ -27,7 +29,7 @@ public class MemberRegistServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url="member/regist";
 		
-		ViewResolver.view(request, response, url);
+		viewResolver.view(request, response, url);
 	}
 
 	
@@ -55,7 +57,7 @@ public class MemberRegistServlet extends HttpServlet {
 			url="member/regist_fail";
 		}
 		
-		ViewResolver.view(request, response, url);
+		viewResolver.view(request, response, url);
 		
 	}
 

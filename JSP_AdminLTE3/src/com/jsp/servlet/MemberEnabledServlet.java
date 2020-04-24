@@ -17,6 +17,8 @@ import com.jsp.service.MemberServiceImpl;
 
 //@WebServlet("/member/enabled")
 public class MemberEnabledServlet extends HttpServlet {
+	
+	ViewResolver viewResolver;
 
 	private MemberService memberService;
 	public void setBoardService(MemberService memberService) {
@@ -37,7 +39,7 @@ public class MemberEnabledServlet extends HttpServlet {
 			url = "member/enabled_fail";
 		}
 
-		ViewResolver.view(request, response, url);
+		viewResolver.view(request, response, url);
 
 	}
 

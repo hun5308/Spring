@@ -18,6 +18,8 @@ import com.jsp.service.MemberServiceImpl;
 //@WebServlet("/member/remove")
 public class MemberRemoveServlet extends HttpServlet {
 	
+	ViewResolver viewResolver;
+	
 	private MemberService memberService;
 	public void setBoardService(MemberService memberService) {
 		this.memberService = memberService;
@@ -43,7 +45,7 @@ public class MemberRemoveServlet extends HttpServlet {
 			}
 		}
 		
-		ViewResolver.view(request, response, url);
+		viewResolver.view(request, response, url);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -14,13 +14,15 @@ import com.jsp.dispatcher.ViewResolver;
 //@WebServlet("/commons/logout")
 public class LogoutServlet extends HttpServlet {
 	
+	ViewResolver viewResolver;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url="redirect:/commons/login";
 		
 		HttpSession session = request.getSession();
 		session.invalidate();
 		
-		ViewResolver.view(request, response, url);
+		viewResolver.view(request, response, url);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	

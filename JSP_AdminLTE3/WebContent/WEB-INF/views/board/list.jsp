@@ -115,14 +115,14 @@
 <script>
 	
 	$('#searchBtn').on('click',function(e){
-		/* 
+		
 		if($('input[name="keyword"]').val() !=""){
 			if($('select[name="searchType"]').val()==""){
 				alert("검색구분은 필수입니다.");
 				$('input[name="searchType"]').focus();
 				return;
 			}			
-		} */
+		}
 		
 		var jobForm=$('#jobForm');
 		jobForm.find("[name='page']").val(1);

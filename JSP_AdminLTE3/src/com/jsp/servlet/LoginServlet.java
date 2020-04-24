@@ -23,6 +23,8 @@ import com.jsp.service.MemberServiceImpl;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	ViewResolver viewResolver;
+	
 	private MemberService memberService;
 	public void setBoardService(MemberService memberService) {
 		this.memberService = memberService;
@@ -76,7 +78,7 @@ public class LoginServlet extends HttpServlet {
 			request.setAttribute("msg", e.getMessage());
 		} 
 		
-		ViewResolver.view(request, response, url);
+		viewResolver.view(request, response, url);
 	}
 
 }
