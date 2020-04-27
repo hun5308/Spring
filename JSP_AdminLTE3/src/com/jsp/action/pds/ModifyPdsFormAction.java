@@ -1,4 +1,3 @@
-
 package com.jsp.action.pds;
 
 import java.io.IOException;
@@ -11,32 +10,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.jsp.action.Action;
 import com.jsp.dto.AttachVO;
-import com.jsp.dto.BoardVO;
 import com.jsp.dto.PdsVO;
-import com.jsp.service.BoardService;
-import com.jsp.service.BoardServiceImpl;
 import com.jsp.service.PdsService;
 import com.jsp.utils.MakeFileName;
 
-public class DetailPdsAction implements Action {
+public class ModifyPdsFormAction implements Action {
 	
-	private PdsService pdsService;
+	public PdsService pdsService;
 	public void setPdsService(PdsService pdsService) {
-		this.pdsService=pdsService;
+		this.pdsService = pdsService;
 	}
-	
+
+
+
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		String url="pds/detailPds";
+
+		String url="pds/modify";
 		
 		int pno=Integer.parseInt(request.getParameter("pno"));
 		
 		
 		
 		try {
-			PdsVO pds = pdsService.read(pno);
+			PdsVO pds = pdsService.getPds(pno);
 			
 			List<AttachVO> renamedAttachList = MakeFileName.pasrseFileNameFromAttaches(pds.getAttachList(), "\\$\\$");
 			

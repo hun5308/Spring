@@ -3,7 +3,6 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 
 <script>
-	alert("정상적으로 등록되었습니다.");
-	window.close();
-	window.opener.location.href="list.do?page=1&perPageNum=10";
+	alert("시스템장애로 수정이 실패했습니다.\n 잠시 후 다시 이용바랍니다.");
+	history.go(-1);
 </script>

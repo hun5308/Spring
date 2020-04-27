@@ -21,7 +21,7 @@ import com.jsp.service.PdsService;
 import com.jsp.utils.GetUploadPath;
 import com.jsp.utils.MakeFileName;
 
-public class RegistPdsAction implements Action {
+public class ModifyPdsAction implements Action {
 
 	private PdsService pdsService;
 
@@ -32,17 +32,19 @@ public class RegistPdsAction implements Action {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "pds/regist_success";
+		String url = "pds/modify_success";
 		
 		// 3. service(VO) 결과
+		PdsVO pds = null;
 		try {
-			PdsVO pds = fileUpload(request);			
-			pdsService.regist(pds);
+			pds = fileUpload(request);			
+			pdsService.modify(pds);
 		} catch (Exception e) {
 			// 4. 결과에 따른 화면 결정.
 			e.printStackTrace();
-			url = "pds/regist_fail";
+			url = "pds/modify_fail";
 		}
+		request.setAttribute("pno", pds.getPno());
 		return url;
 	}
 
@@ -100,7 +102,10 @@ public class RegistPdsAction implements Action {
 						break;
 					case "content":
 						content = item.getString("utf-8");
-						break;					
+						break;
+					case "pno":
+						pno = Integer.parseInt(item.getString("utf-8"));
+						break;	
 					}					
 				
 				} else {// 1.2 파일
@@ -136,6 +141,7 @@ public class RegistPdsAction implements Action {
 			pds.setWriter(writer);
 			pds.setContent(content);
 			pds.setTitle(title);
+			pds.setPno(pno);
 			
 		}catch(FileUploadException e) {
 			e.printStackTrace();
