@@ -86,7 +86,7 @@
 							<td id="pdsTitle" style="text-align:left;max-width: 100%; 
 								overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
 								<a href="javascript:OpenWindow('detail.do?pno=${pds.pno }','상세보기',600,400);">
-									<span class="col-sm-12 ">${pds.title }</span>
+									<span class="col-sm-12 " >${pds.title }</span>
 								</a>
 							</td>
 							<td>${pds.writer }</td>
