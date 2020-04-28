@@ -35,13 +35,13 @@
 							<div class="form-group col-sm-4" >
 								<label for="writer">작성자</label>
 								<input type="text" class="form-control" id="writer" 
-									value="${pds.writer}" readonly />
+									 value="${pds.writer }" readonly />
 							</div>		
 							
 							<div class="form-group col-sm-4" >
 								<label for="regDate">작성일</label>
 								<input type="text" class="form-control" id="regDate" 
-									value="<fmt:formatDate value="${pds.regDate }" pattern="yyyy-MM-dd"/>" readonly />
+									value="<fmt:formatDate value="${pds.regDate }" pattern="yyyy-MM-dd" />" readonly />
 							</div>	
 							<div class="form-group col-sm-4" >
 								<label for="viewcnt">조회수</label>
@@ -59,10 +59,10 @@
 									<h3>첨부파일</h3>
 								</div>			
 								<div class="card-footer">
-										<div class="row">
-											<c:forEach items="${pds.attachList }" var="attach">
-											<div class="col-md-4 col-sm-4 col-xs-12"  style="cursor:pointer;"  
-											onclick="location.href='<%=request.getContextPath()%>/attach/getFile.do?pno=${pds.pno }&ano=${attach.ano}';">
+									<div class="row">
+										<c:forEach items="${pds.attachList }" var="attach">
+											<div class="col-md-4 col-sm-4 col-xs-12"  style="cursor:pointer;"
+												 onclick="location.href='<%=request.getContextPath()%>/attach/getFile.do?pno=${pds.pno }&ano=${attach.ano }';">
 												<div class="info-box">	
 												 	<span class="info-box-icon bg-yellow">
 														<i class="fa fa-copy"></i>
@@ -84,9 +84,9 @@
 					</div>
 					<div class="card-footer">
 						<c:if test="${loginUser.id eq pds.writer }">
-						<button type="button" id="modifyBtn" class="btn btn-warning">Modify</button>						
-					    <button type="button" id="removeBtn" class="btn btn-danger">REMOVE</button>
-						</c:if>  
+							<button type="button" id="modifyBtn" class="btn btn-warning">Modify</button>						
+					    	<button type="button" id="removeBtn" class="btn btn-danger">REMOVE</button>
+					   </c:if>
 					    <button type="button" id="listBtn" class="btn btn-primary">GO LIST </button>
 					</div>									
 				</div><!-- end card -->				
@@ -100,15 +100,13 @@
   
   <form role="form">
   	<input type='hidden' name='pno' value ="${pds.pno}">
-  	<input type='hidden' name='page' value ="${param.page}">
-    <input type='hidden' name='perPageNum' value ="${param.perPageNum}">
-    <input type='hidden' name="searchType" 
-		         value="${param.searchType }" />
-	<input type='hidden' name="keyword" 
-		         value="${param.keyword }" />
+  	<input type='hidden' name='page' value="${pageMaker.cri.page}">
+	<input type='hidden' name='perPageNum' value="${pageMaker.cri.perPageNum}">
+	<input type='hidden' name='searchType' value="${pageMaker.cri.searchType}">
+	<input type='hidden' name='keyword' value="${pageMaker.cri.keyword}">  	
   </form>
 
-  <%@ include file="./detailPds_js.jsp" %>
+  <%@ include file="./detail_js.jsp" %>
 
 </body>
 
