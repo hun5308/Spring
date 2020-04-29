@@ -98,6 +98,44 @@
   </div>
   <!-- /.content-wrapper -->
   
+  		<!-- reply component start --> 
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card card-info">					
+					<div class="card-body">
+						<!-- The time line -->
+						<div class="timeline">
+							<!-- timeline time label -->
+							<div class="time-label" id="repliesDiv">
+								<span class="bg-green">Replies List </span>
+							</div>
+							
+							
+							
+						</div>
+						<div class='text-center'>
+							<ul id="pagination" class="pagination justify-content-center m-0">
+			
+							</ul>
+						</div>
+					</div>
+					<div class="card-footer">
+						<label for="newReplyWriter">Writer</label>
+						<input class="form-control" type="hidden" placeholder="USER ID" 
+							   id="newReplyWriter" readonly value="${loginUser.id }"> 
+						<label for="newReplyText">Reply Text</label>
+						<input class="form-control" type="text"	placeholder="REPLY TEXT" 
+						       id="newReplyText">
+						<br/>
+						<button type="button" class="btn btn-primary" 
+								id="replyAddBtn">ADD REPLY</button>
+					</div>				
+				</div>			
+				
+			</div><!-- end col-md-12 -->
+		</div><!-- end row -->
+		
+  
   <form role="form">
   	<input type='hidden' name='pno' value ="${pds.pno}">
   	<input type='hidden' name='page' value="${pageMaker.cri.page}">
